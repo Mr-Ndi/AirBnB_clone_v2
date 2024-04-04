@@ -1,28 +1,35 @@
 #!/usr/bin/env bash
-# A bash script that sets up your web servers for the deployment of web_static.
+# This script sets up your web servers for the deployment of web_static
 
-sudo apt update
-sudo apt install nginx -y
+# Install Nginx if not already installed
+if ! command -v nginx &> /dev/null; then
+    sudo apt-get -y update
+    sudo apt-get -y install nginx
+fi
 
-mkdir -p /data/web_static/releases/
-mkdir -p /data/web_static/releases/test/
+# Create necessary directories if they don't exist
+sudo mkdir -p /data/web_static/releases/test /data/web_static/shared
 
-echo "<html>
+# Create a fake HTML file for testing
+sudo bash -c 'cat > /data/web_static/releases/test/index.html << EOF
+<html>
   <head>
   </head>
   <body>
     Holberton School
   </body>
-</html>" >> /data/web_static/releases/test/index.html
-# Create a symbolic link
-sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
+</html>
+EOF'
 
-# changing the owner to ubuntu
+# Create symbolic link
+sudo unlink /data/web_static/current
+sudo ln -sf /data/web_static/releases/test /data/web_static/current
+
+# Set ownership to ubuntu user and group recursively
 sudo chown -R ubuntu:ubuntu /data/
-# Update the Nginx configuration to serve
-config_text="location /hbnb_static/ {
-    alias /data/web_static/current/;
-}"
-sudo sed -i "$config_text" /etc/nginx/sites-available/default
-# nginx restsart
+
+# Update Nginx configuration
+sudo sed -i "s|location / {|\n\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}\n\n\tlocation / {|" /etc/nginx/sites-available/default
+
+# Restart Nginx
 sudo service nginx restart
