@@ -13,7 +13,7 @@ echo "<html>
   <body>
     Holberton School
   </body>
-</html>" >> /data/web_static/releases/test/index.hmtl
+</html>" >> /data/web_static/releases/test/index.html
 # Create a symbolic link
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
