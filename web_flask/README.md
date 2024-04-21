@@ -1,0 +1,1 @@
+Flask is a popular choice for web development projects because of its simplicity, flexibility, and ease of use. It is a good choice for both beginners and experienced developers looking for a lightweight and customizable web framework for their Python projects.
