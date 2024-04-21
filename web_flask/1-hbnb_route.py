@@ -15,7 +15,7 @@ def Say_hello():
     return "Hello HBNB!"
 
 
-@app.routes('/hbnb', strict_slashes=False)
+@app.route('/hbnb', strict_slashes=False)
 def Displaying():
     """
     A fuction to show hbnb on hbnb
