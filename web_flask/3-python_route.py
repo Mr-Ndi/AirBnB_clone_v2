@@ -32,8 +32,8 @@ def Capturing(text):
     return "C {}".format(text)
 
 
-@app.route('/python', defaults={'text': 'is cool'}, strict_slashes=False)
-@app.route('/python/<text>', defaults={'text': 'is cool'})
+@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
 def Capturing_for_python(text):
     """
     A function to capture the text that follows python
