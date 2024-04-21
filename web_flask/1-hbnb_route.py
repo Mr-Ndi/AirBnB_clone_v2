@@ -9,15 +9,19 @@ app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
 def Say_hello():
-    ''' A function to print hello to Mr HBNB'''
-    return 'Hello HBNB!'
+    """
+    A function to print hello to Mr HBNB
+    """
+    return "Hello HBNB!"
 
 
 @app.routes('/hbnb', strict_slashes=False)
 def Displaying():
-    ''' A fuction to show hbnb on hbnb'''
-    return 'HBNB'
+    """
+    A fuction to show hbnb on hbnb
+    """
+    return "HBNB"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
