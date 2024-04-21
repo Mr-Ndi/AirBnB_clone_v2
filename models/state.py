@@ -14,14 +14,16 @@ class State(BaseModel, Base):
         name = Column(String(128), nullable=False)
         cities = relationship("City", backref="state")
     else:
-        name = ""
-
+        @property
         def cities(self):
-            """Returns the list of City instances with state_id equals
-               to the State.id"""
+            """
+            Returns the list of City instances with state_id equals
+            to the State.idi
+            """
             dic_val = storage.all(City).values()
             cty_list = []
             for city in dic_val:
                 if city.state_id == self.id:
                     cty_list.append(city)
             return cty_list
+
