@@ -28,7 +28,8 @@ def Capturing(text):
     """
     A function to capture the text
     """
-    return "C " + text
+    text = tex.replace('_',' ')
+    return "C {}".format(text)
 
 
 if __name__ == "__main__":
