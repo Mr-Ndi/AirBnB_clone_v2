@@ -43,8 +43,8 @@ def Capturing_for_python(text):
 
 
 @app.route('/number/<n>', strict_slashes=False)
-def Checking(text):
-    if n.isdigit:
+def Checking(n):
+    if isinstance(n, int):
         return "{} is a number".format(n)
 
 
