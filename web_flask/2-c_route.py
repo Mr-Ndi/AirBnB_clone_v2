@@ -23,7 +23,7 @@ def Displaying():
     return "HBNB"
 
 
-@app.route('/c/<text>')
+@app.route('/c/<text>', strict_slashes=False)
 def Capturing(text):
     """
     A function to capture the text
